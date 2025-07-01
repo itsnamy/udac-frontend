@@ -1,0 +1,70 @@
+/* Editor Styles */
+  
+  .editor-content {
+    min-height: 220px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 12px;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222;
+  }
+  
+  /* ToolBar Styles */
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    padding: 6px 10px;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+  
+  .toolbar-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+  }
+  
+  .toolbar-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .toolbar-btn.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .toolbar-divider {
+    width: 1px;
+    background: #ccc;
+    margin: 0 6px;
+  }
+  
+  .toolbar-select {
+    width: 120px;
+    padding: 4px 6px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #333;
+  }
+  
+  .btn-label {
+    margin-left: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    user-select: none;
+  }
+  

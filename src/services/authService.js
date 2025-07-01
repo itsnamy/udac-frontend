@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/auth/'; // Your backend endpoint
+const API_URL = 'http://localhost:8080/auth/';
 
 export const register = (userData) => {
   return axios.post(API_URL + 'register', userData);
