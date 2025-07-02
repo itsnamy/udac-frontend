@@ -66,7 +66,8 @@ const ManageTutorial = () => {
           
           <h3 className="sectionTitle">Contoh SQL:</h3>
           <div className="leftAligned">
-            <button className="tryButton" onClick={() => window.open(`/sql-tutorial/try/${id}`, '_blank')}>Cuba SQL</button>
+            <button className="tryButton" onClick={() => navigate(`/sql-tutorial/try/${id}`)}>Cuba SQL</button>
+           
           </div>
           <pre className="codeBlock">{tutorial.exampleCode}</pre>
           <div className="inlineSplit">
