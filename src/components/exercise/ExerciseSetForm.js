@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../../style/formStyle.css";
+import API_BASE from "../../config"; 
 
 function ExerciseSetForm() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function ExerciseSetForm() {
     const fetchExerciseSet = async () => {
       try {
         if (idSet) {
-          const response = await axios.get(`http://localhost:8080/exercise/sets/view/${idSet}`, {
+          const response = await axios.get(`${API_BASE}/exercise/sets/view/${idSet}`, {
             headers: { Authorization: `Bearer ${user.token}` },
           });
           const setData = response.data;
@@ -64,7 +65,7 @@ function ExerciseSetForm() {
     try {
       if (idSet) {
         await axios.put(
-          `http://localhost:8080/exercise/sets/update/${idSet}`,
+          `${API_BASE}/exercise/sets/update/${idSet}`,
           exerciseSet,
           {
             headers: { Authorization: `Bearer ${user.token}` },
@@ -73,7 +74,7 @@ function ExerciseSetForm() {
         navigate(`/exercise-sets/${idSet}`);
       } else {
         const response = await axios.post(
-          "http://localhost:8080/exercise/sets/add",
+          `${API_BASE}/exercise/sets/add`,
           exerciseSet,
           {
             headers: { Authorization: `Bearer ${user.token}` },

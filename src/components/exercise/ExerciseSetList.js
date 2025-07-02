@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Clock, ChevronRight, Eye } from "lucide-react";
+import API_BASE from "../../config";
 
 function ExerciseList() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function ExerciseList() {
   const fetchByOwner = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/exercise/sets/view/all`,
+        `${API_BASE}/exercise/sets/view/all`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

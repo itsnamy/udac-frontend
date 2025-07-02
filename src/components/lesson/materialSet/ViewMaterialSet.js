@@ -4,7 +4,7 @@ import axios from "axios";
 import { Pencil, Trash2, Plus, Eye } from 'lucide-react';
 import VideoForm from "../videos/VideoForm";
 import { buildSequentialContent } from "./BuildLearningFlow";
-
+import API_BASE from "../../../config";
 
 const ViewMaterialSet = () => {
   const { id } = useParams(); // material set ID
@@ -27,7 +27,7 @@ const ViewMaterialSet = () => {
   const fetchMaterialSet = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/material/set/subtopics/${id}`,
+        `${API_BASE}/material/set/subtopics/${id}`,
         {
           headers: { Authorization: `Bearer ${user?.token}` },
         }
@@ -86,7 +86,7 @@ const ViewMaterialSet = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:8080/material/set/delete/${id}`, {
+      await axios.delete(`${API_BASE}/material/set/delete/${id}`, {
         headers: { Authorization: `Bearer ${user?.token}` },
       });
       alert("Material set deleted successfully.");
@@ -118,7 +118,7 @@ const ViewMaterialSet = () => {
     try {
       if (sectionModalMode === "add") {
         const response = await axios.post(
-          `http://localhost:8080/material/subtopic/add`,
+          `${API_BASE}/material/subtopic/add`,
           {
             idMaterialSet: id,
             subtopicTitle: currentSectionTitle,
@@ -139,7 +139,7 @@ const ViewMaterialSet = () => {
         }));
       } else if (sectionModalMode === "edit" && sectionBeingEdited) {
         const response = await axios.put(
-          `http://localhost:8080/material/subtopic/update/${sectionBeingEdited.idSubtopicSection}`,
+          `${API_BASE}/material/subtopic/update/${sectionBeingEdited.idSubtopicSection}`,
           {
             ...sectionBeingEdited,
             subtopicTitle: currentSectionTitle,
@@ -175,7 +175,7 @@ const ViewMaterialSet = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:8080/material/subtopic/delete/${sectionId}`, {
+      await axios.delete(`${API_BASE}/material/subtopic/delete/${sectionId}`, {
         headers: { Authorization: `Bearer ${user?.token}` },
       });
 
@@ -222,7 +222,7 @@ const ViewMaterialSet = () => {
     if (!confirmed) return;
   
     try {
-      await axios.delete(`http://localhost:8080/material/video/delete/${videoId}`, {
+      await axios.delete(`${API_BASE}/material/video/delete/${videoId}`, {
         headers: { Authorization: `Bearer ${user?.token}` },
       });
 
@@ -258,7 +258,7 @@ const ViewMaterialSet = () => {
     if (!confirmed) return;
   
     try {
-      await axios.delete(`http://localhost:8080/material/note/delete/${noteId}`, {
+      await axios.delete(`${API_BASE}/material/note/delete/${noteId}`, {
         headers: { Authorization: `Bearer ${user?.token}` },
       });
   
@@ -294,7 +294,7 @@ const ViewMaterialSet = () => {
     if (!window.confirm("Are you sure you want to delete this quiz?")) return;
   
     try {
-      await axios.delete(` http://localhost:8080/exercise/sets/delete/${quizId}`, {
+      await axios.delete(`${API_BASE}/exercise/sets/delete/${quizId}`, {
         headers: {
           Authorization: `Bearer ${user?.token}`,
         },

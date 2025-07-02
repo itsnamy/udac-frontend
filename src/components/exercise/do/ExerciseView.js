@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import API_BASE from "../../../config";
 
 const ExerciseView = () => {
   const { idExerciseSet } = useParams();
@@ -20,7 +21,7 @@ const ExerciseView = () => {
     const fetchExerciseSet = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8080/exercise/questions/view/exercise-set/${idExerciseSet}`,
+          `${API_BASE}/exercise/questions/view/exercise-set/${idExerciseSet}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -36,7 +37,7 @@ const ExerciseView = () => {
     const fetchSubmissions = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8080/exercise/submissions/by-student-set`,
+          `${API_BASE}/exercise/submissions/by-student-set`,
           {
             headers: { Authorization: `Bearer ${token}` },
             params: {

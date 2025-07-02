@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-//import "../../../style/formStyle.css";
+import "../../../style/formStyle.css";
+import API_BASE from "../../../config";
 
 function VideoForm({ video = null, onClose, idSubtopicSection }) {
   const [videoTitle, setVideoTitle] = useState(video ? video.videoTitle || "" : "");
@@ -41,7 +42,7 @@ function VideoForm({ video = null, onClose, idSubtopicSection }) {
       }
 
       if (!video) {
-        await axios.post("http://localhost:8080/material/video/add", formData, {
+        await axios.post(`${API_BASE}/material/video/add`, formData, {
           headers: {
             Authorization: `Bearer ${user.token}`,
             "Content-Type": "multipart/form-data",
@@ -49,7 +50,7 @@ function VideoForm({ video = null, onClose, idSubtopicSection }) {
         });
         console.log("Video added successfully");
       } else {
-        await axios.put(`http://localhost:8080/material/video/update/${video.idVideo}`, formData, {
+        await axios.put(`${API_BASE}/material/video/update/${video.idVideo}`, formData, {
           headers: {
             Authorization: `Bearer ${user.token}`,
             "Content-Type": "multipart/form-data",

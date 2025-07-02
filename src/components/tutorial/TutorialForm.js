@@ -14,6 +14,7 @@ import Image from "@tiptap/extension-image";
 
 import ToolBar from "../common/ToolBar";
 import "../../style/formStyle.css";
+import API_BASE from "../../config"; 
 
 const sqlTypes = [
   "INT", "VARCHAR(50)", "TEXT", "FLOAT", "DOUBLE", "DATE", "DATETIME", "TIME"
@@ -50,7 +51,7 @@ const TutorialForm = () => {
     const fetchTutorial = async () => {
       if (!isEdit) return;
       try {
-        const res = await axios.get(`http://localhost:8080/tutorial/set/${id}`, {
+        const res = await axios.get(`${API_BASE}/tutorial/set/${id}`, {
           headers: { Authorization: `Bearer ${user?.token}` },
         });
         const tutorial = res.data;
@@ -119,11 +120,11 @@ const TutorialForm = () => {
 
     try {
       if (isEdit) {
-        await axios.put(`http://localhost:8080/tutorial/set/update/${id}`, payload, {
+        await axios.put(`${API_BASE}/tutorial/set/update/${id}`, payload, {
           headers: { Authorization: `Bearer ${user?.token}` },
         });
       } else {
-        await axios.post("http://localhost:8080/tutorial/set/add", payload, {
+        await axios.post(`${API_BASE}/tutorial/set/add`, payload, {
           headers: { Authorization: `Bearer ${user?.token}` },
         });
       }

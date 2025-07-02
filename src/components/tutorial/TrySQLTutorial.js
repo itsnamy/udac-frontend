@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import CodeMirror from "@uiw/react-codemirror";
 import { sql } from "@codemirror/lang-sql";
+import API_BASE from "../../config";
 
 const TrySQLTutorial = () => {
   const { id } = useParams();
@@ -16,14 +17,14 @@ const TrySQLTutorial = () => {
   useEffect(() => {
     const fetchTutorialAndLoadDataset = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/tutorial/set/${id}`, {
+        const res = await axios.get(`${API_BASE}/tutorial/set/${id}`, {
           headers: { Authorization: `Bearer ${user?.token}` },
         });
         setTutorial(res.data);
         setCode(res.data.exampleCode);
         
         // Load dataset and get available tables
-        const loadRes = await axios.get(`http://localhost:8080/tutorial/sql-executor/load-from-set/${id}`, {
+        const loadRes = await axios.get(`${API_BASE}/tutorial/sql-executor/load-from-set/${id}`, {
           headers: { Authorization: `Bearer ${user?.token}` },
         });
         
@@ -42,7 +43,7 @@ const TrySQLTutorial = () => {
   const handleRunCode = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8080/tutorial/sql-executor/execute",
+        `${API_BASE}/tutorial/sql-executor/execute`,
         { sql: code },
         { headers: { Authorization: `Bearer ${user?.token}` } }
       );

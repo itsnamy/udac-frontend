@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE from "../../../config";
 
 const GroupedExerciseSetList = () => {
   const location = useLocation();
@@ -21,7 +22,7 @@ const GroupedExerciseSetList = () => {
   const fetchGroupedSets = useCallback(async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/exercise/sets/view/grouped-by-section`,
+        `${API_BASE}/exercise/sets/view/grouped-by-section`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

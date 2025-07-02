@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import parse from "html-react-parser";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import API_BASE from "../../config";
 
 
 const ManageTutorial = () => {
@@ -16,7 +17,7 @@ const ManageTutorial = () => {
   useEffect(() => {
     const fetchTutorial = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/tutorial/set/${id}`, {
+        const res = await axios.get(`${API_BASE}/tutorial/set/${id}`, {
           headers: { Authorization: `Bearer ${user?.token}` },
         });
         setTutorial(res.data);
@@ -37,7 +38,7 @@ const ManageTutorial = () => {
   
   const handleDelete = async () => {
     if (window.confirm("Adakah anda pasti untuk padam set ini?")) {
-      await axios.delete(`http://localhost:8080/tutorial/set/delete/${id}`, {
+      await axios.delete(`${API_BASE}/tutorial/set/delete/${id}`, {
         headers: { Authorization: `Bearer ${user?.token}` },
       });
       navigate("/sql-tutorial/list");

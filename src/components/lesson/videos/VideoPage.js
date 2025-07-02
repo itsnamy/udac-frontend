@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE from '../../../config';
 
 const VideoPage = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const VideoPage = () => {
     const fetchVideo = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/material/video/view/${id}`,
+          `${API_BASE}/material/video/view/${id}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -61,7 +62,7 @@ const VideoPage = () => {
         style={styles.video}
         controls
         preload="metadata"
-        src={`http://localhost:8080/material/video/stream/${video.idVideo}`}
+        src={`${API_BASE}/material/video/stream/${video.idVideo}`}
       >
         Your browser does not support the video tag.
       </video>

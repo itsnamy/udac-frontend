@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../../../style/formStyle.css";
+import API_BASE from "../../../config"; 
 
 const MaterialSetForm = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const MaterialSetForm = () => {
     const fetchMaterialSet = async () => {
       try {
         if (id) {
-          const res = await axios.get(`http://localhost:8080/material/set/view/${id}`, {
+          const res = await axios.get(`${API_BASE}/material/set/view/${id}`, {
             headers: { Authorization: `Bearer ${user.token}` }
           });
           const { topicTitle, topicDesc, ownedBy } = res.data;
@@ -57,14 +58,14 @@ const MaterialSetForm = () => {
     try {
       if (id) {
         await axios.put(
-          `http://localhost:8080/material/set/update/${id}`,
+          `${API_BASE}/material/set/update/${id}`,
           payload,
           { headers: { Authorization: `Bearer ${user.token}` } }
         );
         navigate(`/material/set/view/${id}`);
       } else {
         const response = await axios.post(
-          "http://localhost:8080/material/set/add",
+          "${API_BASE}/material/set/add",
           payload,
           { headers: { Authorization: `Bearer ${user.token}` } }
         );

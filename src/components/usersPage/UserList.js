@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API_BASE from '../../config';
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -18,7 +19,7 @@ function UserList() {
       }
 
       try {
-        const response = await axios.get('http://localhost:8080/admin/getAllUser', {
+        const response = await axios.get(`${API_BASE}/admin/getAllUser`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(response.data);

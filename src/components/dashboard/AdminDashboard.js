@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import './AdminDashboard.css';
 import logo from '../assets/UDac-logo-background.png';
+import API_BASE from '../../config';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -22,10 +23,10 @@ const AdminDashboard = () => {
   const fetchData = useCallback(async () => {
     try {
       const [matRes, exRes, tutRes, userRes] = await Promise.all([
-        axios.get("http://localhost:8080/material/set/view/all", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("http://localhost:8080/exercise/sets/view/grouped-by-section", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("http://localhost:8080/tutorial/set/all", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("http://localhost:8080/admin/getAllUser", { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API_BASE}/material/set/view/all`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API_BASE}/exercise/sets/view/grouped-by-section`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API_BASE}/tutorial/set/all`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API_BASE}/admin/getAllUser`, { headers: { Authorization: `Bearer ${token}` } }),
       ]);
 
       setMaterials(matRes.data);

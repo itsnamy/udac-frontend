@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, Clock, User, Eye, ChevronRight } from 'lucide-react';
+import API_BASE from '../../../config'; 
 
 const LearningMaterialsList = () => {
   const [materialSets, setMaterialSets] = useState([]);
@@ -14,7 +15,7 @@ const LearningMaterialsList = () => {
 
   const fetchLessonSets = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:8080/material/set/view/all", {
+      const response = await axios.get(`${API_BASE}/material/set/view/all`, {
         headers: { Authorization: `Bearer ${user?.token}` },
       });
       setMaterialSets(response.data);

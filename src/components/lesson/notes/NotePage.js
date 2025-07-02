@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import parse from "html-react-parser";
+import API_BASE from '../../../config';
 
 const NotePage = () => {
   const { noteId } = useParams();
@@ -21,7 +22,7 @@ const NotePage = () => {
       console.log('Fetching note with ID:', noteId);
       try {
         const response = await axios.get(
-          `http://localhost:8080/material/note/view/${noteId}`,
+          `${API_BASE}/material/note/view/${noteId}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,

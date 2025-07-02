@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import DndDrawioEditor from "../dndEditor/DndDrawioEditor";
+import API_BASE from "../../../config";
 
 
 const DoExercise = () => {
@@ -22,7 +23,7 @@ const DoExercise = () => {
     const fetchExerciseData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8080/exercise/questions/view/exercise-set/${idExerciseSet}`,
+          `${API_BASE}/exercise/questions/view/exercise-set/${idExerciseSet}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setExerciseData(res.data || null);
@@ -34,7 +35,7 @@ const DoExercise = () => {
     const fetchSubmission = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8080/exercise/submissions/by-student-set`,
+          `${API_BASE}/exercise/submissions/by-student-set`,
           {
             headers: { Authorization: `Bearer ${token}` },
             params: { studentId: user.idUser, exerciseSetId: idExerciseSet },
@@ -46,7 +47,7 @@ const DoExercise = () => {
           );
 
           const ansRes = await axios.get(
-            `http://localhost:8080/exercise/submissions/answers`,
+            `${API_BASE}/exercise/submissions/answers`,
             {
               headers: { Authorization: `Bearer ${token}` },
               params: { submissionId: latest.idSubmission },
@@ -119,7 +120,7 @@ const DoExercise = () => {
       });
 
       await axios.post(
-        `http://localhost:8080/exercise/submissions/submit`,
+        `${API_BASE}/exercise/submissions/submit`,
         answerList,
         {
           headers: { Authorization: `Bearer ${token}` },

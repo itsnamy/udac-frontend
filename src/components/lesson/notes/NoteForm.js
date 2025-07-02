@@ -12,6 +12,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import ToolBar from "../../common/ToolBar.js";
 import "../../../style/formStyle.css";
 import "../../../style/editorStyle.css";
+import API_BASE from "../../../config"; 
 
 function NoteForm() {
   const { sectionId, noteId } = useParams();
@@ -44,7 +45,7 @@ function NoteForm() {
 
     if (isEdit && noteId) {
       axios
-        .get(`http://localhost:8080/material/note/view/${noteId}`, {
+        .get(`${API_BASE}/material/note/view/${noteId}`, {
           headers: { Authorization: `Bearer ${user.token}` },
         })
         .then((res) => {
@@ -79,7 +80,7 @@ function NoteForm() {
 
     try {
       if (isEdit) {
-        await axios.put(`http://localhost:8080/material/note/update/${noteId}`, payload, {
+        await axios.put(`${API_BASE}/material/note/update/${noteId}`, payload, {
           headers: {
             Authorization: `Bearer ${user.token}`,
             "Content-Type": "application/json",
@@ -87,7 +88,7 @@ function NoteForm() {
         });
         console.log("Note updated");
       } else {
-        await axios.post(`http://localhost:8080/material/note/add`, payload, {
+        await axios.post(`${API_BASE}/material/note/add`, payload, {
           headers: {
             Authorization: `Bearer ${user.token}`,
             "Content-Type": "application/json",

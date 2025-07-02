@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import API_BASE from '../../config';
 
 function Profile() {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -12,10 +13,9 @@ function Profile() {
 
   useEffect(() => {
     if (storedUser) {
-      axios.get(`http://localhost:8080/common/getUserbyId?idUser=${storedUser.idUser}`, {
-        headers: {
-          Authorization: `Bearer ${storedUser.token}`
-        }
+      axios.get(`${API_BASE}/common/getUserbyId`, {
+        params: { idUser: storedUser.idUser },
+        headers: { Authorization: `Bearer ${storedUser.token}` }
       })
       .then(response => {
         setUserData(response.data);
@@ -24,7 +24,7 @@ function Profile() {
         console.error('Failed to fetch user:', error);
       });
     }
-  }, [storedUser]);
+  }, [storedUser, API_BASE]);
 
   const handleSave = () => {
     const updatedUserData = {
@@ -34,7 +34,7 @@ function Profile() {
       phone: phoneRef.current.value,
     };
 
-    axios.put(`http://localhost:8080/common/updateUser`, updatedUserData, {
+    axios.put(`${API_BASE}/common/updateUser`, updatedUserData, {
       headers: {
         Authorization: `Bearer ${storedUser.token}`,
         'Content-Type': 'application/json'

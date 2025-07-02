@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE from "../../config";
 
 function ManageExercise() {
   const { idSet } = useParams();
@@ -14,7 +15,7 @@ function ManageExercise() {
     const fetchExerciseSet = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/exercise/questions/view/exercise-set/${idSet}`,
+          `${API_BASE}/exercise/questions/view/exercise-set/${idSet}`,
           {
             headers: {
               Authorization: `Bearer ${user.token}`,
@@ -57,7 +58,7 @@ function ManageExercise() {
     if (!window.confirm("Are you sure you want to delete this exercise set?")) return;
   
     try {
-      await axios.delete(`http://localhost:8080/exercise/sets/delete/${idSet}`, {
+      await axios.delete(`${API_BASE}/exercise/sets/delete/${idSet}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -85,7 +86,7 @@ function ManageExercise() {
   const handleDeleteSection = async (idQuestionSec) => {
     if (!window.confirm("Are you sure you want to delete this section?")) return;
     try {
-      await axios.delete(`http://localhost:8080/exercise/questions/delete/question-section/${idQuestionSec}`, {
+      await axios.delete(`${API_BASE}/exercise/questions/delete/question-section/${idQuestionSec}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -107,7 +108,7 @@ function ManageExercise() {
     if (!window.confirm("Are you sure you want to delete this question?")) return;
     try {
       await axios.delete(
-        `http://localhost:8080/exercise/questions/delete/question/${idQuestion}?questionType=${questionType}`,
+        `${API_BASE}/exercise/questions/delete/question/${idQuestion}?questionType=${questionType}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

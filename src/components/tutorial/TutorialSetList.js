@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Notebook, Eye } from "lucide-react";
+import API_BASE from "../../config";
 
 const TutorialSetList = () => {
   const [tutorials, setTutorials] = useState([]);
@@ -13,7 +14,7 @@ const TutorialSetList = () => {
 
   const fetchTutorialSets = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost:8080/tutorial/set/all", {
+      const response = await axios.get(`${API_BASE}/tutorial/set/all`, {
         headers: { Authorization: `Bearer ${user?.token}` },
       });
       setTutorials(response.data);

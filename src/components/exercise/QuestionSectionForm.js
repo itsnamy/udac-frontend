@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import DndDrawioEditor from "./dndEditor/DndDrawioEditor"; 
+import API_BASE from "../../config";
 
 function QuestionSectionForm() {
   const { idSet, idSection } = useParams();
@@ -19,7 +20,7 @@ function QuestionSectionForm() {
   useEffect(() => {
     if (idSection && token) {
       axios
-        .get(`http://localhost:8080/exercise/questions/view/question-section/${idSection}`, {
+        .get(`${API_BASE}/exercise/questions/view/question-section/${idSection}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -266,8 +267,8 @@ function QuestionSectionForm() {
 
     try {
       const url = idSection
-        ? "http://localhost:8080/exercise/questions/update/question-section"
-        : "http://localhost:8080/exercise/questions/add/question-section";
+        ? `${API_BASE}/exercise/questions/update/question-section`
+        : `${API_BASE}/exercise/questions/add/question-section`;
 
       const method = idSection ? "put" : "post";
 
