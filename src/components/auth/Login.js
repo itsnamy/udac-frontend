@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../services/AuthService';
+import { login } from '../../services/AuthService'
 import logo from '../assets/UDac-logo-background.png';
 import { Eye, EyeOff } from 'lucide-react';
 
