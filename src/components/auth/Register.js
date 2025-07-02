@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { register } from '../../services/AuthService';
+import { register } from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/UDac-logo-background.png';
 import { Eye, EyeOff } from 'lucide-react';

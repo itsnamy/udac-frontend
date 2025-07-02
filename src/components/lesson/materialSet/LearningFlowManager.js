@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { recordProgress } from "../../../services/MaterialProgressService"; 
 
 
 const LearningFlowManager = () => {
