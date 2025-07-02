@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/UDac-logo-background.png';
-import { logout } from '../../services/AuthService';
+import { logout } from '../services/authService';
 
 function NavBar({ toggleSidebar }) {
   const user = JSON.parse(localStorage.getItem('user'));
