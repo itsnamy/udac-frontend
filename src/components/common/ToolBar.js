@@ -124,6 +124,7 @@ const ToolBar = ({ editor }) => {
       >
         <Link2 size={16} />
       </button>
+      {/*
       <button
         onClick={addImage}
         className="toolbar-btn"
@@ -132,6 +133,7 @@ const ToolBar = ({ editor }) => {
       >
         <ImageIcon size={16} />
       </button>
+      */}
       <button
         onClick={insertDivider}
         className="toolbar-btn"
