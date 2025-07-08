@@ -65,7 +65,7 @@ const MaterialSetForm = () => {
         navigate(`/material/set/view/${id}`);
       } else {
         const response = await axios.post(
-          "${API_BASE}/material/set/add",
+          `${API_BASE}/material/set/add`,
           payload,
           { headers: { Authorization: `Bearer ${user.token}` } }
         );

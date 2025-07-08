@@ -67,7 +67,7 @@ const StudentDashboard = () => {
       </div>
       <h3 className="card-title">{item.topicTitle || item.exerciseTitle || item.tutorialTitle}</h3>
       <div className="card-actions">
-        <button onClick={() => onView(item.idMaterialSet || item.idExerciseSet || item.idTutorialSet)} className="btn btn-view"><Eye size={16} /> View</button>
+        <button onClick={() => onView(item.idMaterialSet || item.idExerciseSet || item.idTutorialSet)} className="btn btn-view"><Eye size={16} /> Lihat</button>
       </div>
     </div>
   );

@@ -58,8 +58,8 @@ const AdminDashboard = () => {
       </div>
       <h3 className="card-title">{item.topicTitle || item.exerciseTitle || item.tutorialTitle}</h3>
       <div className="card-actions">
-        <button onClick={() => onView(item.idMaterialSet || item.idExerciseSet || item.idTutorialSet)} className="btn btn-view"><Eye size={16} /> View</button>
-        <button onClick={() => onEdit(item.idMaterialSet || item.idExerciseSet || item.idTutorialSet)} className="btn btn-edit"><Edit size={16} /> Edit</button>
+        <button onClick={() => onView(item.idMaterialSet || item.idExerciseSet || item.idTutorialSet)} className="btn btn-view"><Eye size={16} /> Lihat</button>
+        <button onClick={() => onEdit(item.idMaterialSet || item.idExerciseSet || item.idTutorialSet)} className="btn btn-edit"><Edit size={16} /> Kemaskini</button>
       </div>
     </div>
   );
@@ -168,7 +168,7 @@ const AdminDashboard = () => {
               <div>
                 <div className="section-header">
                   <h2>Latihan</h2>
-                  <button className="btn btn-primary" onClick={() => navigate('/exercise-sets/add')}><Plus size={16} /> Add Exercise</button>
+                  <button className="btn btn-primary" onClick={() => navigate('/exercise-sets/add')}><Plus size={16} /> Tambah Latihan</button>
                 </div>
                 <div className="content-grid">
                   {filteredExercises.map(ex => (
@@ -188,7 +188,7 @@ const AdminDashboard = () => {
               <div>
                 <div className="section-header">
                   <h2>Tutorial SQL</h2>
-                  <button className="btn btn-primary" onClick={() => navigate('/sql-tutorial/add')}><Plus size={16} /> Add Tutorial</button>
+                  <button className="btn btn-primary" onClick={() => navigate('/sql-tutorial/add')}><Plus size={16} /> Tambah Tutorial</button>
                 </div>
                 <div className="content-grid">
                   {filteredTutorials.map(tut => (
